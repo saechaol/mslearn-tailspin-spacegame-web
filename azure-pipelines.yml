@@ -18,13 +18,13 @@ steps:
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK 3.1.300'
   inputs:
-	packageType: sdk
-	version: 3.1.300
+    packageType: sdk
+    version: 3.1.300
 
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
-	verbose: false
+    verbose: false
 
 - script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
   displayName: 'Compile Sass assets'
@@ -39,12 +39,12 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'Write build info'
   inputs:
-	command: 'restore'
-	projects: '**/*.csproj'
+    command: 'restore'
+    projects: '**/*.csproj'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - Release'
   inputs:
-	command: 'build'
-	argument: '--no-restore --configuration Release'
-	project: '**/*.csproj'
+    command: 'build'
+    argument: '--no-restore --configuration Release'
+    project: '**/*.csproj'
